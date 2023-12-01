@@ -1,0 +1,28 @@
+1. What is Axios
+2. How you handle requests without middlewares (DEMOS)
+3. Axios middleware as lifesaver (interceptors)
+-> axios.interceptors.response|request.use and how it handles
+
+axios.interceptors.request.use(config => {
+    // Do something before request is sent
+    return config;
+  },
+  error => {
+    // Do something with request error
+    return Promise.reject(error);
+});
+
+axios.interceptors.response.use(response => {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response;
+  },
+  error => {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+});
+
+4. New axios instance for exceptional request so not share interceptors
+5. DEMO with axios in react: handles all errors; handles 401 unauthorized; handles auth header
+6. AxiosMiddleware in React.Utils and demo how it is used in PowerOutages
